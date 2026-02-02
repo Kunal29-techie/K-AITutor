@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - KAiTutor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="kaitutor-logo.png" alt="KAiTutor Logo">
+            </a>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <a href="index.html" class="auth-back-link">&larr; Back to Home</a>
+
+        <div class="auth-card">
+            <h1 class="auth-title">Create Your Account</h1>
+            <p class="auth-subtitle">Start your personalized learning journey today</p>
+            
+            <form id="signupForm" class="auth-form">
+                <div id="signupError" class="error-message" style="display: none;"></div>
+                
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Arjun Sharma">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="school">School Name</label>
+                    <input type="school" id="school" name="school" required placeholder="School Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City/Village</label>
+                    <input type="city" id="city" name="city" required placeholder="City/Village">
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="state" id="state" name="state" required placeholder="State">
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="mobile" id="mobile" name="mobile" required placeholder="+91-" minlength="10" maxlength="10">
+                </div>
+
+                <div class="form-group">
+                    <label for="grade">Grade Level</label>
+                    <select id="grade" name="grade" required>
+                        <option value="">Select your grade</option>
+                        <option value="6">Grade 6</option>
+                        <option value="7">Grade 7</option>
+                        <option value="8">Grade 8</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="section">Section</label>
+                    <input type="section" id="section" name="section" required placeholder="A/B/C/D">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Create a password" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+                </div>
+
+                <button type="submit" class="btn-primary btn-full">Create Account</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+    document.getElementById("signupForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const errorDiv = document.getElementById("signupError");
+    errorDiv.style.display = "none";
+
+    // ✅ Explicit DOM bindings (CRITICAL FIX)
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirmPassword");
+    const gradeInput = document.getElementById("grade");
+    const sectionInput = document.getElementById("section");
+    const schoolInput = document.getElementById("school");
+
+    const payload = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        password: passwordInput.value,
+        grade: gradeInput.value,
+        section: sectionInput.value.trim(),
+        school: schoolInput.value
+    };
+
+    if (passwordInput.value !== confirmPasswordInput.value) {
+        errorDiv.textContent = "Passwords do not match";
+        errorDiv.style.display = "block";
+        return;
+    }
+
+    const res = await fetch("https://dvbwohodr9qxd.cloudfront.net/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+        errorDiv.textContent = data.error || "Signup failed";
+        errorDiv.style.display = "block";
+        return;
+    }
+
+    // ✅ Success
+    window.location.href = "login.html";
+});
+    </script>
+</body>
+</html>
