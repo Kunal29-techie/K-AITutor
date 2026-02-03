@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload Transcript</title>
+  <link rel="stylesheet" href="transcript.css" />
+</head>
+<body>
+
+<div class="upload-page">
+
+  <h1>Upload Transcript</h1>
+  <p class="subtitle">Upload or drag & drop a <strong>.docx</strong> file</p>
+
+  <div id="dropZone" class="drop-zone">
+    <input type="file" id="fileInput" accept=".docx" hidden />
+    <p>Drag & drop your transcript here</p>
+    <span>or</span>
+    <button id="browseBtn">Browse File</button>
+  </div>
+
+  <p id="fileInfo" class="file-info"></p>
+  <p id="errorMsg" class="error-msg"></p>
+
+</div>
+
+<script src="transcript.js"></script>
+</body>
+</html>

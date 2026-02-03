@@ -1,0 +1,75 @@
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: #f8fafc;
+  margin: 0;
+}
+
+.upload-page {
+  max-width: 600px;
+  margin: 5rem auto;
+  padding: 2.5rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.drop-zone {
+  border: 2px dashed #3C3979;
+  border-radius: 14px;
+  padding: 3rem 2rem;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.drop-zone.dragover {
+  background: rgba(60, 57, 121, 0.05);
+  border-color: #DC3545;
+}
+
+.drop-zone p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.drop-zone span {
+  display: block;
+  margin: 0.5rem 0;
+  color: #64748b;
+}
+
+.drop-zone button {
+  background: #3C3979;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.drop-zone button:hover {
+  background: #DC3545;
+}
+
+.file-info {
+  margin-top: 1.5rem;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.error-msg {
+  margin-top: 1rem;
+  color: #dc2626;
+  font-weight: 600;
+}
