@@ -27,25 +27,38 @@ dropZone.addEventListener("dragleave", () => {
 dropZone.addEventListener("drop", (e) => {
   e.preventDefault();
   dropZone.classList.remove("dragover");
-
-  const file = e.dataTransfer.files[0];
-  handleFile(file);
+  handleFile(e.dataTransfer.files[0]);
 });
 
-// File validation
+// ===============================
+// FILE HANDLER
+// ===============================
 function handleFile(file) {
   fileInfo.textContent = "";
   errorMsg.textContent = "";
 
-  if (!file) return;
+  // Read values ONLY when needed
+  const className = document.getElementById("className").value.trim();
+  const studentName = document.getElementById("studentName").value.trim();
+  const facultyName = document.getElementById("facultyName").value.trim();
 
-  if (!file.name.endsWith(".docx")) {
-    errorMsg.textContent = "Only .docx files are allowed";
+  // Validate details first
+  if (!className || !studentName || !facultyName) {
+    errorMsg.textContent = "Please fill in Class, Student Name, and Faculty Name before uploading.";
     return;
   }
 
-  fileInfo.textContent = `Selected file: ${file.name}`;
-  
-  //  Later: upload to backend using FormData
-  // uploadTranscript(file);
+  if (!file) return;
+
+  // Validate file type
+  if (!file.name.toLowerCase().endsWith(".docx")) {
+    errorMsg.textContent = "Only .docx files are allowed.";
+    return;
+  }
+
+  // Success feedback
+  fileInfo.textContent = `✔ ${file.name} uploaded for ${studentName} (${className})`;
+
+  // 🚀 Next step (later):
+  // uploadTranscript(file, { className, studentName, facultyName });
 }
