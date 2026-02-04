@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload Transcript</title>
+  <link rel="stylesheet" href="../styless/transcript.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+
+    <div class="nav-left">
+      <a href="../index.html">
+        <img src="../kaitutor-logo.png" alt="KAiTutor Logo" class="nav-logo-img" />
+      </a>
+    </div>
+
+    <div class="nav-links">
+      <a href="admin.html">Admin</a>
+      <a href="transcript.html" class="active">Upload Transcript</a>
+      <a href="logout.html" class="logout">Logout</a>
+    </div>
+
+  </div>
+</nav>
+
+<!-- PAGE CONTENT -->
+<div class="upload-page">
+  <div class="upload-card">
+
+    <h1>Upload Transcript</h1>
+    <p class="subtitle">Enter details and upload a <strong>.docx</strong> file</p>
+
+    <!-- DETAILS FORM -->
+    <div class="details-form">
+      <div class="form-group">
+        <label for="className">Class</label>
+        <input type="text" id="className" placeholder="e.g. 12 A - Science" />
+      </div>
+
+      <div class="form-group">
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName" placeholder="Enter student name" />
+      </div>
+
+      <div class="form-group">
+        <label for="facultyName">Faculty Name</label>
+        <input type="text" id="facultyName" placeholder="Enter faculty name" />
+      </div>
+    </div>
+
+    <!-- UPLOAD ZONE -->
+    <div id="dropZone" class="drop-zone">
+      <input type="file" id="fileInput" accept=".docx" hidden />
+      <p>Drag & drop your transcript here</p>
+      <span>or</span>
+      <button id="browseBtn">Browse File</button>
+    </div>
+
+    <p id="fileInfo" class="file-info"></p>
+    <p id="errorMsg" class="error-msg"></p>
+
+  </div>
+</div>
+
+<script src="../jscript/transcript.js"></script>
+</body>
+</html>

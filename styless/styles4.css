@@ -181,8 +181,7 @@ section {
       rgba(60, 57, 121, 0.35),
       rgba(60, 57, 121, 0.35)
     ),
-    url("mainposter.png"); /* <-- your poster/image */
-
+    url("../styless/mainposter.png"); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

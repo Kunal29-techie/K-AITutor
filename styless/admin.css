@@ -1,0 +1,94 @@
+/* ===============================
+   ADMIN BASE
+================================ */
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f8fafc;
+}
+
+.admin-layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* ===============================
+   SIDEBAR
+================================ */
+.admin-sidebar {
+  width: 240px;
+  background: #c22708;
+  color: white;
+  padding: 2rem 1.5rem;
+}
+
+.admin-logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+.admin-sidebar nav a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: #ebecef;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.admin-sidebar nav a:hover {
+  background: #1e293b;
+  color: white;
+}
+
+.admin-sidebar nav a.active {
+  color: #ffffff;
+  font-weight: 700;
+}
+/* ===============================
+   CONTENT
+================================ */
+.admin-content {
+  flex: 1;
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* ===============================
+   STATS
+================================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.75rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.stat-card h3 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #3C3979;
+  margin-bottom: 0.3rem;
+}
+
+.stat-card p {
+  color: #64748b;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
