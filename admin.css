@@ -17,7 +17,7 @@ body {
 ================================ */
 .admin-sidebar {
   width: 240px;
-  background: #0f172a;
+  background: #c22708;
   color: white;
   padding: 2rem 1.5rem;
 }
@@ -32,18 +32,21 @@ body {
   display: block;
   padding: 0.75rem 1rem;
   border-radius: 8px;
-  color: #cbd5f5;
+  color: #ebecef;
   text-decoration: none;
   margin-bottom: 0.5rem;
   cursor: pointer;
 }
 
-.admin-sidebar nav a:hover,
-.admin-sidebar nav a.active {
+.admin-sidebar nav a:hover {
   background: #1e293b;
   color: white;
 }
 
+.admin-sidebar nav a.active {
+  color: #ffffff;
+  font-weight: 700;
+}
 /* ===============================
    CONTENT
 ================================ */
