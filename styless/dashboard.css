@@ -95,3 +95,58 @@
         .stat-card-big { background: white; padding: 25px; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center; }
         .stat-big-number { font-size: 32px; font-weight: 800; color: #3C3979; margin-bottom: 5px; }
         .stat-big-label { font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+
+
+
+
+
+
+
+
+        @media (max-width: 768px) {
+
+  /* Page wrapper */
+  .upload-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .upload-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Form spacing */
+  .details-form {
+    gap: 1rem;
+  }
+
+  .form-group input {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  /* Upload zone */
+  .drop-zone {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .drop-zone p {
+    font-size: 0.95rem;
+  }
+
+  /* Buttons */
+  .drop-zone button {
+    width: 100%;
+    padding: 0.75rem;
+  }
+}

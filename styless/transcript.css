@@ -218,3 +218,55 @@ h1 {
     gap: 1rem;
   }
 }
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+  /* Page wrapper */
+  .upload-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .upload-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Form spacing */
+  .details-form {
+    gap: 1rem;
+  }
+
+  .form-group input {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  /* Upload zone */
+  .drop-zone {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .drop-zone p {
+    font-size: 0.95rem;
+  }
+
+  /* Buttons */
+  .drop-zone button {
+    width: 100%;
+    padding: 0.75rem;
+  }
+}
