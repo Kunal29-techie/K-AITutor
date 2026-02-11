@@ -198,7 +198,6 @@ function showTab(tabName) {
 
 
 function applyFilters() {
-    const school = document.getElementById("filterSchool").value.toLowerCase();
     const classVal = document.getElementById("filterClass").value.toLowerCase();
     const section = document.getElementById("filterSection").value.toLowerCase();
     const roll = document.getElementById("filterRoll").value.toLowerCase();
@@ -208,19 +207,18 @@ function applyFilters() {
     rows.forEach(row => {
         const cells = row.querySelectorAll("td");
 
-        const schoolCell = cells[1]?.textContent.toLowerCase();   // adjust index
-        const classCell = cells[2]?.textContent.toLowerCase();
-        const sectionCell = cells[3]?.textContent.toLowerCase();
-        const rollCell = cells[4]?.textContent.toLowerCase();
+        const classCell = cells[1]?.textContent.toLowerCase();
+        const sectionCell = cells[2]?.textContent.toLowerCase();
+        const nameCell = cells[0]?.textContent.toLowerCase();
 
-        const matchSchool = !school || schoolCell.includes(school);
         const matchClass = !classVal || classCell.includes(classVal);
         const matchSection = !section || sectionCell.includes(section);
-        const matchRoll = !roll || rollCell.includes(roll);
+        const matchRoll = !roll || nameCell.includes(roll);
 
         row.style.display =
-            (matchSchool && matchClass && matchSection && matchRoll)
+            (matchClass && matchSection && matchRoll)
             ? ""
             : "none";
     });
 }
+

@@ -27,6 +27,30 @@
         /* ========= NAV ========= */
         .nav { background: white; border-bottom: 1px solid var(--border); padding: 15px 0; position: sticky; top: 0; z-index: 100; }
         .nav-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+
+
+        /* ===== NAV BRAND (Logo Replacement) ===== */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-logo-img {
+    height: 50px;   /* same visual height as previous 24px text */
+    width: auto;
+    object-fit: contain;
+}
+
+.admin-badge {
+    font-size: 10px;
+    background: #eef2ff;
+    color: #3C3979;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
         
         /* ========= LAYOUT ========= */
         .dashboard-container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
@@ -67,19 +91,24 @@
     transition: 0.2s;
 }
 /* ===== Hover Effect (Brand Accent Red) ===== */
-.filter-select:hover,
-.filter-input:hover {
+.filter-select:hover{
+
     background: #DC3545;
     border-color: #DC3545;
     color: white;
+}
+.filter-input:hover{
+    background-color:#DC3545;
+    box-shadow: 0 0 0 3px rgba(220,53,69,0.15);
 }
 
 /* Keep white text when focused */
 .filter-select:focus,
 .filter-input:focus {
-    background: #DC3545;
     border-color: #DC3545;
-    color: white;
+    box-shadow: 0 0 0 3px rgba(220,53,69,0.2);
+    background: white;   /* prevent red background */
+    color: var(--text-dark);
 }
 
 
