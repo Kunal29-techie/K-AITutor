@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - KAiTutor</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../styless/admin.css" />
+   
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-container">
+        <a href="#" style="text-decoration:none; display:flex; align-items:center; gap:8px;">
+            <span style="font-weight:800; font-size:24px; color:#3C3979;">KAiTutor</span>
+            <span style="font-size:10px; vertical-align:top; background:#eef2ff; color:#3C3979; padding:2px 6px; border-radius:4px; font-weight:700;">ADMIN</span>
+        </a>
+        <div style="display:flex; align-items:center; gap:25px; font-size:14px; font-weight:600; color:#334155;">
+            <a href="#" onclick="showTab('users')" id="navUser" style="cursor:pointer; color:#3C3979;">Admin</a>
+            
+            <a href="#" onclick="showTab('transcript')" id="navTranscript" style="cursor:pointer; color:#334155;">Upload Transcript</a>
+             <a href="#" onclick="showTab('enterUsers')" id="navEnterUsers">Enter New User</a>
+
+            <a href="#" onclick="logout()" style="cursor:pointer; color:#ef4444;">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="dashboard-container">
+
+    <div id="statsSection" class="stats-grid">
+        <div class="stat-card"><div class="stat-val">1,204</div><div class="stat-lbl">Total Users</div></div>
+        <div class="stat-card"><div class="stat-val">45</div><div class="stat-lbl">Transcripts Uploaded</div></div>
+        <div class="stat-card"><div class="stat-val">12</div><div class="stat-lbl">New Enrollments</div></div>
+    </div>
+
+    <div id="usersTab" class="tab-content active">
+        <div class="card">
+            <!-- <div class="card-header">
+                <div class="card-title">User Directory</div>
+                <button class="btn-primary" onclick="openEnrollModal()"><i class="fa-solid fa-user-plus"></i> Enroll New User</button>
+            </div> -->
+
+
+
+
+
+
+           <div class="card-header filter-header">
+
+    <div class="filters-left">
+        <select id="filterSchool" class="filter-select" onchange="applyFilters()">
+            <option value="">All Schools</option>
+            <option value="ABC School">ABC School</option>
+            <option value="XYZ School">XYZ School</option>
+        </select>
+
+        <select id="filterClass" class="filter-select" onchange="applyFilters()">
+            <option value="">All Classes</option>
+            <option value="12">12</option>
+            <option value="11">11</option>
+        </select>
+
+        <select id="filterSection" class="filter-select" onchange="applyFilters()">
+            <option value="">All Sections</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+        </select>
+
+        <input type="text"
+               id="filterRoll"
+               class="filter-input"
+               placeholder="Roll No"
+               onkeyup="applyFilters()" />
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>School&nbsp;Name</th>
+                        <th>Email</th>
+                        <th>Grade</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Devansh Kalia</strong></td>
+                        <td>devansh@student.com</td>
+                        <td>Undergraduate</td>
+                        <td><span style="color:#059669; font-weight:700; font-size:12px;">Active</span></td>
+                        <td><button class="btn-outline">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Amit Sharma</strong></td>
+                        <td>amit@student.com</td>
+                        <td>Grade 12 - Sci</td>
+                        <td><span style="color:#059669; font-weight:700; font-size:12px;">Active</span></td>
+                        <td><button class="btn-outline">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="transcriptTab" class="tab-content">
+        <div class="card" style="min-height: 600px; display:flex; align-items:center; justify-content:center;">
+            
+            <div style="width: 100%; max-width: 600px; padding: 20px;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2 style="font-size: 24px; color: #1e293b; margin-bottom: 8px; font-weight: 700;">Upload Transcript</h2>
+                    <p style="color: #64748b; font-size: 15px;">Enter details and upload a .docx file</p>
+                </div>
+
+                <form id="uploadForm" onsubmit="event.preventDefault(); submitTranscript();">
+                    <div style="margin-bottom: 20px;">
+                        <label class="form-label">Class</label>
+                        <input type="text" id="transClass" class="form-input" placeholder="e.g. 12 A - Science" required>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label class="form-label">Student Name</label>
+                        <input type="text" id="transStudent" class="form-input" placeholder="Enter student name">
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label class="form-label">Faculty Name</label>
+                        <input type="text" id="transFaculty" class="form-input" placeholder="Enter faculty name" required>
+                    </div>
+
+                    <div id="dropArea" class="drop-zone">
+                        <div id="fileNameDisplay" style="font-size: 16px; color: #1e293b; margin-bottom: 10px; font-weight: 600;">Drag & drop your transcript here</div>
+                        <div style="font-size: 14px; color: #64748b; margin-bottom: 15px;">or</div>
+                        <button type="button" class="btn-primary" onclick="document.getElementById('fileInput').click()">Browse File</button>
+                        <input type="file" id="fileInput" name="file" hidden accept=".docx,.doc,.txt" onchange="updateFileName()">
+                    </div>
+
+                    <button type="submit" id="btnUpload" class="btn-primary" style="width: 100%; margin-top: 25px; padding: 12px; font-size: 16px;">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Upload Transcript
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+        <div id="enterUsersTab" class="tab-content">
+        <div class="card" style="max-width:600px; margin:auto;">
+
+            <div class="card-title" style="margin-bottom:20px;">
+                Upload Users via CSV
+            </div>
+
+            <form id="csvForm" onsubmit="event.preventDefault(); uploadCSV();">
+
+                <div style="margin-bottom:20px;">
+                    <label class="form-label">Select School</label>
+                    <select id="schoolSelect" class="form-input" required>
+                        <option value="">Select School</option>
+                        <option value="ABC School">ABC School</option>
+                        <option value="XYZ School">XYZ School</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <label class="form-label">Upload CSV</label>
+                    <input type="file" id="csvFile" accept=".csv" class="form-input" required>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width:100%;">
+                    Upload & Generate File
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+</div>
+
+<div id="enrollModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+    <div style="background:white; padding:30px; border-radius:12px; width:400px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+        <h3 style="margin-bottom:20px; color:var(--primary);">Enroll New User</h3>
+        <div style="margin-bottom:15px;"><label class="form-label">Full Name</label><input type="text" class="form-input" placeholder="John Doe"></div>
+        <div style="margin-bottom:15px;"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="john@example.com"></div>
+        <div style="text-align:right; margin-top:25px; display:flex; justify-content:flex-end; gap:10px;">
+            <button class="btn-outline" onclick="closeEnrollModal()">Cancel</button>
+            <button class="btn-primary" onclick="closeEnrollModal()">Save User</button>
+        </div>
+    </div>
+</div>
+
+<!-- <script>
+    /* ================= CONFIG ================= */
+    // Change this if your Python server runs on a different IP/Port
+    const API_BASE = "http://127.0.0.1:8001"; 
+
+    /* ================= TABS ================= */
+    function showTab(tabName) {
+        // Content toggling
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        if(tabName === 'users') {
+            document.getElementById('usersTab').classList.add('active');
+            document.getElementById('statsSection').style.display = 'grid';
+            
+            // Nav Highlighting
+            document.getElementById('navUser').style.color = '#3C3979';
+            document.getElementById('navTranscript').style.color = '#334155';
+            document.getElementById('navTranscript').style.borderBottom = 'none';
+        } else {
+            document.getElementById('transcriptTab').classList.add('active');
+            document.getElementById('statsSection').style.display = 'none';
+            
+            // Nav Highlighting
+            document.getElementById('navUser').style.color = '#334155';
+            document.getElementById('navTranscript').style.color = '#3C3979';
+            document.getElementById('navTranscript').style.borderBottom = '2px solid #3C3979';
+        }
+    }
+
+    /* ================= MODAL ================= */
+    function openEnrollModal() { document.getElementById('enrollModal').style.display = 'flex'; }
+    function closeEnrollModal() { document.getElementById('enrollModal').style.display = 'none'; }
+    window.onclick = function(e) { if(e.target == document.getElementById('enrollModal')) closeEnrollModal(); }
+
+    /* ================= FILE HANDLING & BACKEND CONNECTION ================= */
+    const dropArea = document.getElementById('dropArea');
+    const fileInput = document.getElementById('fileInput');
+
+    // Display selected file name
+    function updateFileName() {
+        const display = document.getElementById('fileNameDisplay');
+        if (fileInput.files && fileInput.files.length > 0) {
+            display.textContent = "Selected: " + fileInput.files[0].name;
+            display.style.color = "#166534"; // Success Green
+            display.style.fontWeight = "700";
+        } else {
+            display.textContent = "Drag & drop your transcript here";
+            display.style.color = "#1e293b";
+        }
+    }
+
+    // Drag & Drop visual effects
+    ['dragenter', 'dragover'].forEach(evt => {
+        dropArea.addEventListener(evt, (e) => {
+            e.preventDefault();
+            dropArea.classList.add('dragover');
+        });
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+        dropArea.addEventListener(evt, (e) => {
+            e.preventDefault();
+            dropArea.classList.remove('dragover');
+        });
+    });
+
+    // Handle Drop
+    dropArea.addEventListener('drop', (e) => {
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            fileInput.files = files;
+            updateFileName();
+        }
+    });
+
+    // Handle Submit to Flask
+    async function submitTranscript() {
+        const btn = document.getElementById('btnUpload');
+        const classVal = document.getElementById('transClass').value;
+        const facultyVal = document.getElementById('transFaculty').value;
+        const studentVal = document.getElementById('transStudent').value;
+        const file = fileInput.files[0];
+
+        // Validation
+        if (!classVal || !facultyVal || !file) {
+            alert("Please fill in Class, Faculty Name, and select a file.");
+            return;
+        }
+
+        // Prepare Data for Python Backend
+        const formData = new FormData();
+        formData.append('class', classVal);
+        formData.append('faculty_name', facultyVal);
+        formData.append('student_name', studentVal); // Optional metadata
+        formData.append('file', file);
+
+        // UI Loading State
+        const originalBtnContent = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Uploading...';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(`${API_BASE}/admin/upload-transcript`, {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert("✅ Success: " + result.message);
+                document.getElementById('uploadForm').reset();
+                updateFileName();
+            } else {
+                alert("❌ Server Error: " + (result.error || "Unknown error"));
+            }
+        } catch (error) {
+            console.error("Upload Error:", error);
+            alert("❌ Connection Failed. Ensure your Python backend is running on port 8001.");
+        } finally {
+            btn.innerHTML = originalBtnContent;
+            btn.disabled = false;
+        }
+    }
+
+    function logout() {
+        if(confirm("Are you sure you want to logout?")) window.location.href = "login.html";
+    }
+
+    // Initialize
+    showTab('users');
+</script> -->
+
+</body>
+<script src="../jscript/admin.js"></script>
+</html>
