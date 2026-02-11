@@ -134,9 +134,15 @@
                     </div>
 
                     <div style="margin-bottom: 20px;">
-                        <label class="form-label">Student Name</label>
-                        <input type="text" id="transStudent" class="form-input" placeholder="Enter student name">
-                    </div>
+    <label class="form-label">School Name</label>
+    <select id="transSchool" class="form-input" required>
+        <option value="">Select School</option>
+        <option value="ABC School">ABC School</option>
+        <option value="XYZ School">XYZ School</option>
+        <option value="Green Valley School">Green Valley School</option>
+    </select>
+</div>
+
 
                     <div style="margin-bottom: 20px;">
                         <label class="form-label">Faculty Name</label>
@@ -169,13 +175,16 @@
             <form id="csvForm" onsubmit="event.preventDefault(); uploadCSV();">
 
                 <div style="margin-bottom:20px;">
-                    <label class="form-label">Select School</label>
-                    <select id="schoolSelect" class="form-input" required>
-                        <option value="">Select School</option>
-                        <option value="ABC School">ABC School</option>
-                        <option value="XYZ School">XYZ School</option>
-                    </select>
-                </div>
+    <label class="form-label">School Name</label>
+    <input 
+        type="text" 
+        id="schoolSelect" 
+        class="form-input" 
+        placeholder="Enter school name"
+        required
+    >
+</div>
+
 
                 <div style="margin-bottom:20px;">
                     <label class="form-label">Upload CSV</label>
